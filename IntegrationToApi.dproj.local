@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/10/07 10:24:11.000.268,C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToApi.dproj</Transaction>
+    <Transaction>2025/10/07 10:29:04.000.967,=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/07 10:29:54.000.174,C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\main.pas=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/10/07 13:02:30.000.862,=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas</Transaction>
+    <Transaction>2025/10/07 13:04:46.000.322,C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\GetSerial.pas</Transaction>
+    <Transaction>2025/10/07 13:07:18.000.590,=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas</Transaction>
+    <Transaction>2025/10/07 13:07:53.000.217,C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\IntegrationAPI\ValidateSerial.pas</Transaction>
+    <Transaction>2025/10/07 13:15:11.865,=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas</Transaction>
+    <Transaction>2025/10/07 13:15:36.886,C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\IntegrationAPI\InputSerial.pas=C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
