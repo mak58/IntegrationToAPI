@@ -1,0 +1,32 @@
+# Delphi compiled units
+*.dcu
+*.dcp
+*.dres
+*.exe
+*.dll
+*.bpl
+*.dsk
+*.map
+*.tds
+*.~*
+
+# Delphi backup and recovery
+*.local
+*.identcache
+*.history/
+*.recovery/
+
+# Delphi project files that shouldn't be versioned
+*.stat
+*.tvsconfig
+*.dproj.local
+*.ipch
+*.log
+
+# OS-specific
+Thumbs.db
+.DS_Store
+
+# IDE-specific
+__history/
+__recovery/
