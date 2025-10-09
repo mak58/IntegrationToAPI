@@ -6,20 +6,31 @@ uses
   Spring.Container,
   uGetSerial,
   uValidateSerial,
-  n_GenericRepository_U,
-  n_InterfaceRepository_U,
+  uGenericRepository,
+  uInterfaceRepository,
   uRegistryAPI;
 
-procedure RegisterClassesAndInterfaces(var aContainer: TContainer);
+function SetDIContainer(): IGetSerialHandler;
 
 implementation
 
-procedure RegisterClassesAndInterfaces(var aContainer: TContainer);
+function SetDIContainer(): IGetSerialHandler;
+/// <summary>
+///   This is the registration on Spring4D Dependency Injection Container.
+///   TRepositoryListMemory class is declared as a Lazy<> inicialization on Ctor and variable type in the caller class;
+/// </summary>
 begin
-  aContainer.RegisterType<IGetSerialHandler, TGetSerial>('Handler').AsSingleton();
-  aContainer.RegisterType<IValidateSerial, TValidateSerial>('Validator').AsSingleton();
-  aContainer.RegisterType<IRepository<TRegistryAPI>, TRepositoryListMemory<TRegistryAPI>>();
-  aContainer.Build();
+  Writeln('Setting DI container...');
+
+  var Container := TContainer.Create();
+
+  Container.RegisterType<IGetSerialHandler, TGetSerial>.AsSingleton();
+  Container.RegisterType<IValidateSerial, TValidateSerial>.AsSingleton();
+  Container.RegisterType<IRepository<TRegistryAPI>, TRepositoryListMemory<TRegistryAPI>>.AsSingleton();
+
+  Container.Build();
+
+  Result := Container.Resolve<IGetSerialHandler>;
 end;
 
 end.

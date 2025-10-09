@@ -3,7 +3,8 @@ unit uMain;
 interface
 
 uses
-  Spring.Container, uDI_GetSerial,
+  System.SysUtils,
+  uDI_GetSerial,
   uInputSerial, uGetSerial, uValidateSerial;
 
 procedure InitiateIntegrationToAPI();
@@ -13,18 +14,16 @@ implementation
 
 procedure InitiateIntegrationToAPI();
 begin
-  var Container := TContainer.Create();
+  Writeln('InitiateIntegrationToAPI - First method...');
 
-  uDI_GetSerial.RegisterClassesAndInterfaces(Container);
-
-  var Handler := Container.Resolve<IGetSerialHandler>;
+  var handler := uDI_GetSerial.SetDIContainer();
 
   var input := TInputSerial.Create('001',
     '02109855640',
     EKindRequest.Commom,
     EKindService.Registry);
 
-  Handler.Handle(input);
+  handler.Handle(input);
 end;
 
 

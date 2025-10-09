@@ -11,11 +11,12 @@ uses
   uValidateSerial in 'src\Features\IntegrationAPI\uValidateSerial.pas',
   uInputSerial in 'src\Features\IntegrationAPI\uInputSerial.pas',
   uDI_GetSerial in 'src\Features\IntegrationAPI\uDI_GetSerial.pas',
-  n_GenericRepository_U in 'src\Infra\n_GenericRepository_U.pas',
-  n_InterfaceRepository_U in 'src\Infra\n_InterfaceRepository_U.pas',
+  uGenericRepository in 'src\Infra\uGenericRepository.pas',
+  uInterfaceRepository in 'src\Infra\uInterfaceRepository.pas',
   uRegistryAPI in 'src\Models\uRegistryAPI.pas';
 
 begin
+  Writeln('Running app...');
   InitiateIntegrationToAPI();
   ReadLn;
 end.

@@ -103,8 +103,8 @@
         <DCCReference Include="src\Features\IntegrationAPI\uValidateSerial.pas"/>
         <DCCReference Include="src\Features\IntegrationAPI\uInputSerial.pas"/>
         <DCCReference Include="src\Features\IntegrationAPI\uDI_GetSerial.pas"/>
-        <DCCReference Include="src\Infra\n_GenericRepository_U.pas"/>
-        <DCCReference Include="src\Infra\n_InterfaceRepository_U.pas"/>
+        <DCCReference Include="src\Infra\uGenericRepository.pas"/>
+        <DCCReference Include="src\Infra\uInterfaceRepository.pas"/>
         <DCCReference Include="src\Models\uRegistryAPI.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
