@@ -27,6 +27,7 @@ Porém, eu queria aplicar boas práticas e arquitetura moderna, então decidi cr
 
 A estrutura do projeto segue uma aboradagem **vertical slices**, facilitando a organização por recursos (features):
 
+```text
 IntegrationToAPI/
 │
 ├── src/
@@ -52,7 +53,7 @@ IntegrationToAPI/
 ├── boss.json
 ├── README.md
 └── LICENSE
-
+```
 ---
 
 ## 🧱 Arquitetura e Componentes Principais
@@ -79,8 +80,11 @@ private
   FValidator: ISerialValidator;
   FRepository: Lazy<ISerialRepository>;
 public
-  constructor Create(const AValidator: ISerialValidator; const ARepository: Lazy<ISerialRepository>);
-  procedure Handle(const Input: string);
+  constructor Create(aValidator: ISerialValidator; 
+    aRepository: Lazy<ISerialRepository>;
+    aLogger: ILogger);
+
+  procedure Handle(const aInput: TInputSerial);
 end;
 
 * O validador e o repositório são injetados no ctor (construtor).
@@ -107,7 +111,7 @@ Essas dependências podem ser instaladas facilmente via BOSS
 boss install github.com/mak58/RestClient
 boss install github.com/mak58/GenericRepositoryListMemory
 
-use path bellow on Delphi SearchPath;
+Incluir os caminhos das libs no Delphi SearchPath;
 ..\..\Delphi-libs\spring4d\Source;
 ..\..\Delphi-libs\spring4d\Source\Base;
 ..\..\Delphi-libs\spring4d\Source\Base\Logging;

@@ -8,13 +8,14 @@ uses
   RestFluent,
   uRegistryAPI, uInterfaceRepository,
   System.Generics.Collections,
-  Spring, Spring.Collections;
+  Spring, Spring.Collections,
+  uResult, uLogger;
 
 type
 
   IGetSerialHandler = interface
     ['{840E7D01-8473-4885-B2F5-1DA963735634}']
-    procedure Handle(_aInput: TInputSerial);
+    function Handle(aInput: TInputSerial): TResult<string>;
   end;
 
   TGetSerial = class(TInterfacedObject, IGetSerialHandler)
@@ -23,13 +24,15 @@ type
   public
     FValidate: IValidateSerial;
     FRepository: Lazy<IRepository<TRegistryAPI>>;
+    FLogger: ILogger;
 
     property Repository: IRepository<TRegistryAPI> read GetRepository;
 
-    procedure Handle(_aInput: TInputSerial);
+    function Handle(aInput: TInputSerial): TResult<string>;
 
-    constructor Create(_aValidate: IValidateSerial;
-      _aRepository: Lazy<IRepository<TRegistryAPI>>);
+    constructor Create(aValidate: IValidateSerial;
+      aRepository: Lazy<IRepository<TRegistryAPI>>;
+      aLogger: ILogger);
   end;
 
 const
@@ -39,11 +42,13 @@ implementation
 
 { TGetSerial }
 
-constructor TGetSerial.Create(_aValidate: IValidateSerial;
-  _aRepository: Lazy<IRepository<TRegistryAPI>>);
+constructor TGetSerial.Create(aValidate: IValidateSerial;
+  aRepository: Lazy<IRepository<TRegistryAPI>>;
+  aLogger: ILogger);
 begin
-  FValidate := _aValidate;
-  FRepository := _aRepository;
+  FValidate := aValidate;
+  FRepository := aRepository;
+  FLogger := aLogger;
   Writeln('Class that receives DI creating - TGetSerial....');
 end;
 
@@ -57,33 +62,34 @@ begin
   Result := FRepository.Value;
 end;
 
-procedure TGetSerial.Handle(_aInput: TInputSerial);
+function TGetSerial.Handle(aInput: TInputSerial): TResult<string>;
 begin
-  Writeln('Handling feature - Handler method....');
+  FLogger.Log('Handling feature - Handler method....');
 
-  if not (FValidate.ValidateSerial(_aInput)) then Exit;
+  if not (FValidate.ValidateSerial(aInput)) then
+    Exit(TResult<string>.Fail('Input invalid!'));
 
   var client := TRestFluent.Create();
 
   var response := client.MapGet(URL_GUID);
 
-  Writeln('Requesting API GUID -Rest- #: ' + response.Data);
+  FLogger.Log('Requesting API GUID -Rest- #: ' + response.Data);
 
   var registryApi := TRegistryAPI.Create('0456',
     response.Data,
     Now);
 
-  Writeln('TRepository creating lately (Lazy) by container due input validation method successful....');
+  FLogger.Log('TRepository creating lately (Lazy) by container due input validation method successful....');
 
-  Writeln('Adding to repository....');
+  FLogger.Log('Adding to repository....');
   Repository.Add(registryApi);
 
   var item := Repository.FindById(1);
 
-  Writeln(Format('Fetching Database registry #%s, Serial #%s, Date %s',
+  FLogger.Log(Format('Fetching Database registry #%s, Serial #%s, Date %s',
     [item.ID, item.RegistryNumber, DateToStr(item.Date)]));
 
-  Writeln('The end....')
+  Result := TResult<string>.Ok(item.RegistryNumber, 'It''s Done! ');
 end;
 
 end.

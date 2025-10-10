@@ -98,7 +98,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\uMain.pas"/>
         <DCCReference Include="src\Features\IntegrationAPI\uGetSerial.pas"/>
         <DCCReference Include="src\Features\IntegrationAPI\uValidateSerial.pas"/>
         <DCCReference Include="src\Features\IntegrationAPI\uInputSerial.pas"/>
@@ -106,6 +105,9 @@
         <DCCReference Include="src\Infra\uGenericRepository.pas"/>
         <DCCReference Include="src\Infra\uInterfaceRepository.pas"/>
         <DCCReference Include="src\Models\uRegistryAPI.pas"/>
+        <DCCReference Include="src\Shared\uResult.pas"/>
+        <DCCReference Include="src\Features\Main\uMain.pas"/>
+        <DCCReference Include="src\Shared\uLogger.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

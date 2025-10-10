@@ -8,7 +8,8 @@ uses
   uValidateSerial,
   uGenericRepository,
   uInterfaceRepository,
-  uRegistryAPI;
+  uRegistryAPI,
+  uLogger;
 
 function SetDIContainer(): IGetSerialHandler;
 
@@ -27,6 +28,7 @@ begin
   Container.RegisterType<IGetSerialHandler, TGetSerial>.AsSingleton();
   Container.RegisterType<IValidateSerial, TValidateSerial>.AsSingleton();
   Container.RegisterType<IRepository<TRegistryAPI>, TRepositoryListMemory<TRegistryAPI>>.AsSingleton();
+  Container.RegisterType<ILogger, TConsoleLogger>.AsSingleton();
 
   Container.Build();
 
