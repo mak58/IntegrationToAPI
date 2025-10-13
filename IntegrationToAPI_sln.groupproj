@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F163C1C0-3E74-4C0B-925B-B920BE56CF51}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="IntegrationToApi.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="tests\IntegrationToAPITest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="IntegrationToApi">
+        <MSBuild Projects="IntegrationToApi.dproj"/>
+    </Target>
+    <Target Name="IntegrationToApi:Clean">
+        <MSBuild Projects="IntegrationToApi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntegrationToApi:Make">
+        <MSBuild Projects="IntegrationToApi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="IntegrationToAPITest">
+        <MSBuild Projects="tests\IntegrationToAPITest.dproj"/>
+    </Target>
+    <Target Name="IntegrationToAPITest:Clean">
+        <MSBuild Projects="tests\IntegrationToAPITest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntegrationToAPITest:Make">
+        <MSBuild Projects="tests\IntegrationToAPITest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="IntegrationToApi;IntegrationToAPITest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="IntegrationToApi:Clean;IntegrationToAPITest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="IntegrationToApi:Make;IntegrationToAPITest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

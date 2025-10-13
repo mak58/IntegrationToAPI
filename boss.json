@@ -1,0 +1,12 @@
+{
+	"name": "IntegrationToAPI",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./src",
+	"projects": [],
+	"dependencies": {
+		"github.com/mak58/genericrepositorylistinmemory": ">0.0.0",
+		"github.com/mak58/restclient": "^v12.1.2"
+	}
+}

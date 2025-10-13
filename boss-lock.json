@@ -1,0 +1,22 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2025-10-13T13:54:21.4964442-03:00",
+	"installedModules": {
+		"github.com/mak58/genericrepositorylistinmemory": {
+			"name": "genericrepositorylistinmemory",
+			"version": "main",
+			"hash": "51c125773fbbbfd867d5d1e28d7bcb37",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/mak58/restclient": {
+			"name": "restclient",
+			"version": "v12.1.2",
+			"hash": "b86a410cd472c6cf0f1c6d7e9050a41b",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}

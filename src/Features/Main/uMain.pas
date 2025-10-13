@@ -4,8 +4,10 @@ interface
 
 uses
   System.SysUtils,
-  uDI_GetSerial,
-  uInputSerial, uGetSerial, uValidateSerial;
+  uGetSerial_DI,
+  uGetSerial_input,
+  uGetSerial_handler,
+  uGetSerial_validate;
 
 procedure InitiateIntegrationToAPI();
 
@@ -16,12 +18,12 @@ procedure InitiateIntegrationToAPI();
 begin
   Writeln('InitiateIntegrationToAPI - First method...');
 
-  var handler := uDI_GetSerial.SetDIContainer();
-
   var input := TInputSerial.Create('001',
     '02109855640',
     EKindRequest.Commom,
     EKindService.Registry);
+
+  var handler := uGetSerial_DI.SetDIContainer();
 
   var result := handler.Handle(input);
 

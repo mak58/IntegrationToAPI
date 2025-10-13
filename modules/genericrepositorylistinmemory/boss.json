@@ -1,0 +1,8 @@
+{
+  "name": "GenericRepositoryListInMemory",
+  "version": "12.1.1",
+  "homepage": "https://github.com/mak58/GenericRepositoryListInMemory",
+  "description": "Biblioteca Delphi para armazenar entidades em Lista em memória",
+  "repository": "github:mak58/GenericRepositoryListInMemory",
+  "dependencies": {}
+}

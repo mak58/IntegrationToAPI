@@ -11,6 +11,7 @@ type
 ///   This is an implementation of memory Repository pattern with TObjectList;
 ///   It's a good implementation to simulate a Database for study or test's projects.
 ///  Copyright (C) 2025 Marcio Koehler
+///  https://github.com/mak58/GenericRepositoryListInMemory
 /// </summary>
 
   TRepositoryListMemory<T: class, constructor> = class(TInterfacedObject, IRepository<T>)
