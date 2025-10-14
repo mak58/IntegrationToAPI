@@ -3,10 +3,10 @@
         <ProjectGuid>{F163C1C0-3E74-4C0B-925B-B920BE56CF51}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="IntegrationToApi.dproj">
+        <Projects Include="tests\IntegrationToAPITest.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="tests\IntegrationToAPITest.dproj">
+        <Projects Include="src\IntegrationToApi.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,15 +17,6 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="IntegrationToApi">
-        <MSBuild Projects="IntegrationToApi.dproj"/>
-    </Target>
-    <Target Name="IntegrationToApi:Clean">
-        <MSBuild Projects="IntegrationToApi.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="IntegrationToApi:Make">
-        <MSBuild Projects="IntegrationToApi.dproj" Targets="Make"/>
-    </Target>
     <Target Name="IntegrationToAPITest">
         <MSBuild Projects="tests\IntegrationToAPITest.dproj"/>
     </Target>
@@ -35,14 +26,23 @@
     <Target Name="IntegrationToAPITest:Make">
         <MSBuild Projects="tests\IntegrationToAPITest.dproj" Targets="Make"/>
     </Target>
+    <Target Name="IntegrationToApi">
+        <MSBuild Projects="src\IntegrationToApi.dproj"/>
+    </Target>
+    <Target Name="IntegrationToApi:Clean">
+        <MSBuild Projects="src\IntegrationToApi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IntegrationToApi:Make">
+        <MSBuild Projects="src\IntegrationToApi.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="IntegrationToApi;IntegrationToAPITest"/>
+        <CallTarget Targets="IntegrationToAPITest;IntegrationToApi"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="IntegrationToApi:Clean;IntegrationToAPITest:Clean"/>
+        <CallTarget Targets="IntegrationToAPITest:Clean;IntegrationToApi:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="IntegrationToApi:Make;IntegrationToAPITest:Make"/>
+        <CallTarget Targets="IntegrationToAPITest:Make;IntegrationToApi:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

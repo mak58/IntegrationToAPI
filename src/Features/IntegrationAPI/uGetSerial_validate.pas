@@ -3,42 +3,37 @@ unit uGetSerial_validate;
 interface
 
 uses
-  uGetSerial_input, System.SysUtils;
+  uGetSerial_input, System.SysUtils, uValidate;
 
 type
-  IValidateSerial = interface
+  TValidateReturn = (Valid, NoID, NoCPFCNPJ, Invalid);
+
+  IValidate = interface
     ['{9EC7F3D0-01AD-4C33-99DB-12BB18FA7172}']
-    function ValidateSerial(aSerialInput: TInputSerial): Boolean;
+    function ValidateEntry(aSerialInput: TInputSerial):
+      TValidationResult<TValidateReturn>;
   end;
 
-  TValidateSerial = class(TInterfacedObject, IValidateSerial)
+  TValidateSerial = class(TInterfacedObject, IValidate)
   public
-    function ValidateSerial(aSerialInput: TInputSerial): Boolean;
+    function ValidateEntry(
+      aSerialInput: TInputSerial): TValidationResult<TValidateReturn>;
   end;
+
+  const
+  ID_ERROR = 'Id must be fullfilled!';
+  CPFCNPJ_ERROR = 'CPFCNPJ must be fullfilled!';
 
 implementation
 
 { TValidateSerial }
 
-function TValidateSerial.ValidateSerial(aSerialInput: TInputSerial): Boolean;
+function TValidateSerial.ValidateEntry(
+  aSerialInput: TInputSerial): TValidationResult<TValidateReturn>;
 begin
-  var LMessageValidation := TStringBuilder.Create(3);
-  try
-    if (aSerialInput.Id = '') then
-      LMessageValidation.AppendLine('Id must be fullfilled!');
-
-    if (aSerialInput.CPFCNPJ = '') then
-      LMessageValidation.AppendLine('CPFCNPJ must be fullfilled!');
-
-    Result := LMessageValidation.Length = 0;
-
-    if (Result) then
-      Writeln('Input validated succesfully....')
-    else
-      Writeln('Ivalid input, please correct issues for follow-up...');
-  finally
-    LMessageValidation.Free;
-  end;
+  Result := Result.Ok(Valid)
+              .FailIf(aSerialInput.Id = '', NoID, ID_ERROR)
+              .FailIf(aSerialInput.CPFCNPJ = '', NoCPFCNPJ, CPFCNPJ_ERROR);
 end;
 
 end.

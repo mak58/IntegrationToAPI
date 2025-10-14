@@ -99,17 +99,18 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\Features\IntegrationAPI\uGetSerial_validate.pas"/>
-        <DCCReference Include="src\Features\IntegrationAPI\uGetSerial_input.pas"/>
-        <DCCReference Include="src\Features\IntegrationAPI\uGetSerial_DI.pas"/>
-        <DCCReference Include="src\Models\uRegistryAPI.pas"/>
-        <DCCReference Include="src\Shared\uResult.pas"/>
-        <DCCReference Include="src\Features\Main\uMain.pas"/>
-        <DCCReference Include="src\Shared\uLogger.pas"/>
-        <DCCReference Include="src\Features\IntegrationAPI\uGetSerial_handler.pas"/>
-        <DCCReference Include="modules\genericrepositorylistinmemory\uGenericRepository.pas"/>
-        <DCCReference Include="modules\genericrepositorylistinmemory\uInterfaceRepository.pas"/>
-        <DCCReference Include="modules\restclient\v12.1.2\RestFluent.pas"/>
+        <DCCReference Include="Features\Main\uMain.pas"/>
+        <DCCReference Include="Models\uRegistryAPI.pas"/>
+        <DCCReference Include="Features\IntegrationAPI\uGetSerial_DI.pas"/>
+        <DCCReference Include="Features\IntegrationAPI\uGetSerial_handler.pas"/>
+        <DCCReference Include="Features\IntegrationAPI\uGetSerial_input.pas"/>
+        <DCCReference Include="Features\IntegrationAPI\uGetSerial_validate.pas"/>
+        <DCCReference Include="Shared\uLogger.pas"/>
+        <DCCReference Include="Shared\uResult.pas"/>
+        <DCCReference Include="..\modules\restclient\v12.1.2\RestFluent.pas"/>
+        <DCCReference Include="..\modules\genericrepositorylistinmemory\uGenericRepository.pas"/>
+        <DCCReference Include="..\modules\genericrepositorylistinmemory\uInterfaceRepository.pas"/>
+        <DCCReference Include="Shared\uValidate.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

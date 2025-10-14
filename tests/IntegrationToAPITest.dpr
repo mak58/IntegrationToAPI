@@ -13,7 +13,7 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  uTestGetSerial in 'uTestGetSerial.pas';
+  uGetSerial_Test in 'uGetSerial_Test.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}
@@ -58,8 +58,8 @@ begin
     if TDUnitX.Options.ExitBehavior = TDUnitXExitBehavior.Pause then
     begin
       System.Write('Done.. press <Enter> key to quit.');
-      System.Readln;
     end;
+    System.Readln;
     {$ENDIF}
   except
     on E: Exception do

@@ -6,17 +6,18 @@ program IntegrationToApi;
 
 uses
   System.SysUtils,
-  uGetSerial_validate in 'src\Features\IntegrationAPI\uGetSerial_validate.pas',
-  uGetSerial_input in 'src\Features\IntegrationAPI\uGetSerial_input.pas',
-  uGetSerial_DI in 'src\Features\IntegrationAPI\uGetSerial_DI.pas',
-  uRegistryAPI in 'src\Models\uRegistryAPI.pas',
-  uResult in 'src\Shared\uResult.pas',
-  uMain in 'src\Features\Main\uMain.pas',
-  uLogger in 'src\Shared\uLogger.pas',
-  uGetSerial_handler in 'src\Features\IntegrationAPI\uGetSerial_handler.pas',
-  uGenericRepository in 'modules\genericrepositorylistinmemory\uGenericRepository.pas',
-  uInterfaceRepository in 'modules\genericrepositorylistinmemory\uInterfaceRepository.pas',
-  RestFluent in 'modules\restclient\v12.1.2\RestFluent.pas';
+  uMain in 'Features\Main\uMain.pas',
+  uRegistryAPI in 'Models\uRegistryAPI.pas',
+  uGetSerial_DI in 'Features\IntegrationAPI\uGetSerial_DI.pas',
+  uGetSerial_handler in 'Features\IntegrationAPI\uGetSerial_handler.pas',
+  uGetSerial_input in 'Features\IntegrationAPI\uGetSerial_input.pas',
+  uGetSerial_validate in 'Features\IntegrationAPI\uGetSerial_validate.pas',
+  uLogger in 'Shared\uLogger.pas',
+  uResult in 'Shared\uResult.pas',
+  RestFluent in '..\modules\restclient\v12.1.2\RestFluent.pas',
+  uGenericRepository in '..\modules\genericrepositorylistinmemory\uGenericRepository.pas',
+  uInterfaceRepository in '..\modules\genericrepositorylistinmemory\uInterfaceRepository.pas',
+  uValidate in 'Shared\uValidate.pas';
 
 begin
   Writeln('Running app...');

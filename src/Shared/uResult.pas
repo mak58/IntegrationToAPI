@@ -3,7 +3,7 @@ unit uResult;
 interface
 
 /// <summary>
-///   Result Pattern to revert back result,messages and Data;
+///   Result Pattern to revert back result, messages and Data;
 /// </summary>
 ///
 type

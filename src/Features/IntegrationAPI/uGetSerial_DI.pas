@@ -27,10 +27,10 @@ begin
   var Container := TContainer.Create();
 
   Container.RegisterType<IGetSerialHandler, TGetSerial>.AsSingleton();
-  Container.RegisterType<IValidateSerial, TValidateSerial>.AsSingleton();
-  Container.RegisterType<IRestFluent, TRestFluent>.AsSingleton();
-  Container.RegisterType<IRepository<TRegistryAPI>, TRepositoryListMemory<TRegistryAPI>>.AsSingleton();
-  Container.RegisterType<ILogger, TConsoleLogger>.AsSingleton();
+  Container.RegisterType<IValidate, TValidateSerial>.AsSingleton();
+  Container.RegisterType<IRestFluent, TRestFluent>.AsTransient();
+  Container.RegisterType<IRepository<TRegistryAPI>, TRepositoryListMemory<TRegistryAPI>>.AsTransient();
+  Container.RegisterType<ILogger, TMemoryLogger>.AsSingleton();
 
   Container.Build();
 

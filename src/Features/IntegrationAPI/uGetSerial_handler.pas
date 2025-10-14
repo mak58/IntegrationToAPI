@@ -22,7 +22,7 @@ type
   private
     function GetRepository: IRepository<TRegistryAPI>;
   public
-    FValidate: IValidateSerial;
+    FValidate: IValidate;
     FServiceApi: IRestFluent;
     FRepository: Lazy<IRepository<TRegistryAPI>>;
     FLogger: ILogger;
@@ -31,7 +31,7 @@ type
 
     function Handle(aInput: TInputSerial): TResult<string>;
 
-    constructor Create(aValidate: IValidateSerial;
+    constructor Create(aValidate: IValidate;
       aServiceApi: IRestFluent;
       aRepository: Lazy<IRepository<TRegistryAPI>>;
       aLogger: ILogger);
@@ -44,7 +44,7 @@ implementation
 
 { TGetSerial }
 
-constructor TGetSerial.Create(aValidate: IValidateSerial;
+constructor TGetSerial.Create(aValidate: IValidate;
   aServiceApi: IRestFluent;
   aRepository: Lazy<IRepository<TRegistryAPI>>;
   aLogger: ILogger);
@@ -72,27 +72,29 @@ end;
 
 function TGetSerial.Handle(aInput: TInputSerial): TResult<string>;
 begin
-  FLogger.Log('Handling feature - Handler method....');
+  FLogger.Info('Handling feature - Handler method....');
 
-  if not (FValidate.ValidateSerial(aInput)) then
-    Exit(TResult<string>.Fail('Input invalid!'));
+  var validate := FValidate.ValidateEntry(aInput);
+
+  if not (validate.IsValid) then
+    Exit(TResult<string>.Fail(validate.Message));
 
   var response := FServiceApi.MapGet(URL_GUID);
 
-  FLogger.Log('Requesting API GUID -Rest- #: ' + response.Data);
+  FLogger.Info('Requesting API GUID -Rest- #: ' + response.Data);
 
   var registryApi := TRegistryAPI.Create('0456',
     response.Data,
     Now);
 
-  FLogger.Log('TRepository creating lately (Lazy) by container due input validation method successful....');
+  FLogger.Info('TRepository creating lately (Lazy) by container due input validation method successful....');
 
-  FLogger.Log('Adding to repository....');
+  FLogger.Info('Adding to repository....');
   Repository.Add(registryApi);
 
   var item := Repository.FindById(1);
 
-  FLogger.Log(Format('Fetching Database registry #%s, Serial #%s, Date %s',
+  FLogger.Info(Format('Fetching Database registry #%s, Serial #%s, Date %s',
     [item.ID, item.RegistryNumber, DateToStr(item.Date)]));
 
   Result := TResult<string>.Ok(item.RegistryNumber, 'It''s Done! ');

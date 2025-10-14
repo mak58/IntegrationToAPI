@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<test-results name="C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\tests\Win32\Debug\IntegrationToAPITest.exe" total="2" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2025-10-13" time="14:21:35">
+<test-results name="C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\tests\Win32\Debug\IntegrationToAPITest.exe" total="3" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2025-10-14" time="14:27:42">
   <culture-info current-culture="en" current-uiculture="en" />
-  <test-suite type="Assembly" name="IntegrationToAPITest.exe" executed="true" result="Success" success="True" time="14:21:35" asserts="0">
+  <test-suite type="Assembly" name="IntegrationToAPITest.exe" executed="true" result="Success" success="True" time="14:27:42" asserts="0">
     <results>
-        <test-suite type="Namespace" name="uTestGetSerial" executed="true" result="Success" success="True" time="0.002" asserts="0" >
+        <test-suite type="Namespace" name="uGetSerial_Test" executed="true" result="Success" success="True" time="0.002" asserts="0" >
           <results>
               <test-suite type="Fixture" name="TTestGetSerial" executed="True" result="Success" success="True" time="0.002" >
                 <results>
                   <test-case name="ValidateInput_GetSerial_ReturnValidObject" executed="True" result="Success" success="True" time="0.000" asserts="0" />
-                  <test-case name="Executehandler_GetSerial_GetConfirmationMessage" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="ValidateInput_GetSerial_ReturnInvalidID" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="ValidateInput_GetSerial_ReturnInvalidCPFCNPJ" executed="True" result="Success" success="True" time="0.000" asserts="0" />
                 </results>
               </test-suite>
           </results>

@@ -69,7 +69,6 @@ type
    TRestFluent = class(TInterfacedObject, IRestFluent)
    private
      RestClient: TRESTClient;
-     RestResponse: TRESTResponse;
      FToken, FPayload: string;
      FFilePath, FContentType: string;
      FAccept, FCharset: string;
@@ -106,7 +105,7 @@ type
     function MapDeleteAsync(const APath: string; ACallback: TOnRequestFinished = nil): TResult;
 
     constructor Create();
-    destructor Destroy();
+    destructor Destroy(); override;
    end;
 
   const

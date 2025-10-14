@@ -30,11 +30,6 @@ begin
   CPFCNPJ := aCpfCnpj;
   KindRequest := GetEnumName(TypeInfo(EKindRequest), Ord(aKind));
   Service := GetEnumName(TypeInfo(EKindService), Ord(aService));
-
-  Writeln('Creating input object...');
-
-  Writeln(Format('Id %s, #%s, Personal doc: %s, service: %s...',
-  [Id, CPFCNPJ, KindRequest, Service]));
 end;
 
 end.
