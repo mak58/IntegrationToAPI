@@ -14,10 +14,10 @@ uses
   uGetSerial_validate in 'Features\IntegrationAPI\uGetSerial_validate.pas',
   uLogger in 'Shared\uLogger.pas',
   uResult in 'Shared\uResult.pas',
-  RestFluent in '..\modules\restclient\v12.1.2\RestFluent.pas',
   uGenericRepository in '..\modules\genericrepositorylistinmemory\uGenericRepository.pas',
   uInterfaceRepository in '..\modules\genericrepositorylistinmemory\uInterfaceRepository.pas',
-  uValidate in 'Shared\uValidate.pas';
+  uValidate in 'Shared\uValidate.pas',
+  RestFluent in '..\modules\restclient\v12.1.3\RestFluent.pas';
 
 begin
   Writeln('Running app...');

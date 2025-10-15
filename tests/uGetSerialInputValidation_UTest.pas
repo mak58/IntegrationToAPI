@@ -1,4 +1,4 @@
-unit uGetSerialInputValidation_Test;
+unit uGetSerialInputValidation_UTest;
 
 interface
 
@@ -25,7 +25,7 @@ implementation
 procedure TTestGetSerialInputValidation.ValidateInput_GetSerial_ReturnValidObject();
 begin
   // arrange
-  var inputTest := TInputSerial.Create('000',
+  var inputTest := TInputSerial.Create('001',
     '02109855640',
     EKindRequest.Commom,
     EKindService.Registry);

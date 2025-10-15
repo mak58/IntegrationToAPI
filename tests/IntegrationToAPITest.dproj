@@ -40,6 +40,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
@@ -77,10 +83,14 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
-        <DCC_UnitSearchPath>C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\IntegrationAPI;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Shared;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\IntegrationAPI;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Shared;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\delphi-mocks\Source;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\genericrepositorylistinmemory;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Models;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Container;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Logging;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Patches;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Patterns;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Container;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Interception;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Services;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Collections;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\restclient\v12.1.3;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Manifest_File>(None)</Manifest_File>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <DCC_DcpOutput>.\bin\dcp</DCC_DcpOutput>
+        <DCC_BplOutput>.\bin</DCC_BplOutput>
+        <DCC_ExeOutput>.\bin</DCC_ExeOutput>
+        <DCC_DcuOutput>.\bin\dcu</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -88,11 +98,24 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <DCC_UnitSearchPath>C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Features\IntegrationAPI;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Shared;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\delphi-mocks\Source;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\genericrepositorylistinmemory;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\src\Models;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Container;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Logging;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Patches;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Patterns;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Container;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Interception;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Core\Services;C:\Users\Marcio\OneDrive\Documentos\Delphi-libs\spring4d\Source\Base\Collections;C:\Users\Marcio\OneDrive\Documentos\Embarcadero\Studio\Projects\IntegrationToAPI\modules\restclient\v12.1.3;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_ExeOutput>.\bin</DCC_ExeOutput>
+        <DCC_BplOutput>.\bin</DCC_BplOutput>
+        <DCC_DcuOutput>.\bin\dcu</DCC_DcuOutput>
+        <DCC_DcpOutput>.\bin\dcp</DCC_DcpOutput>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>(None)</Manifest_File>
+        <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="uGetSerial_Test.pas"/>
+        <DCCReference Include="uGetSerialInputValidation_UTest.pas"/>
+        <DCCReference Include="uGetSerialRest_ITest.pas"/>
+        <DCCReference Include="..\src\Shared\uMyUtils.pas"/>
+        <DCCReference Include="..\modules\restclient\v12.1.3\RestFluent.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -134,7 +157,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\IntegrationToAPITest.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="bin\IntegrationToAPITest.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>IntegrationToAPITest.exe</RemoteName>
                         <Overwrite>true</Overwrite>

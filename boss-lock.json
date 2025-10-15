@@ -13,7 +13,15 @@
 		"github.com/mak58/restclient": {
 			"name": "restclient",
 			"version": "v12.1.2",
-			"hash": "b86a410cd472c6cf0f1c6d7e9050a41b",
+			"hash": "57fe4fd22fbaa8b08e6743e29ce18743",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		},
+		"github.com/vsofttechnologies/delphi-mocks": {
+			"name": "delphi-mocks",
+			"version": "v0.3.1",
+			"hash": "cab49cbb88e935294132f93975ddb43f",
 			"artifacts": {},
 			"failed": false,
 			"changed": false

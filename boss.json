@@ -7,6 +7,7 @@
 	"projects": [],
 	"dependencies": {
 		"github.com/mak58/genericrepositorylistinmemory": ">0.0.0",
-		"github.com/mak58/restclient": "^v12.1.2"
+		"github.com/mak58/restclient": "^v12.1.2",
+		"github.com/vsofttechnologies/delphi-mocks": "^v0.3.1"
 	}
 }

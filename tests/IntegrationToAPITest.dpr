@@ -13,7 +13,10 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  uGetSerial_Test in 'uGetSerial_Test.pas';
+  uGetSerialInputValidation_UTest in 'uGetSerialInputValidation_UTest.pas',
+  uGetSerialRest_ITest in 'uGetSerialRest_ITest.pas',
+  uMyUtils in '..\src\Shared\uMyUtils.pas',
+  RestFluent in '..\modules\restclient\v12.1.3\RestFluent.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}
