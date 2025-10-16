@@ -28,6 +28,11 @@ type
     procedure Delete(_AId: Integer);
   end;
 
+  EAddingErrorException = class(Exception);
+
+const
+  ADD_ERROR = '_AItem object invalid.';
+
 implementation
 
 { TRepositoryListMemory<T> }
@@ -45,6 +50,9 @@ end;
 
 procedure TRepositoryListMemory<T>.Add(_AItem: T);
 begin
+  if not(Assigned(_AItem)) then
+    raise EAddingErrorException.Create(ADD_ERROR);
+
   FListItems.Add(_AItem);
 end;
 

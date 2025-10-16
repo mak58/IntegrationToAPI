@@ -16,7 +16,10 @@ uses
   uGetSerialInputValidation_UTest in 'uGetSerialInputValidation_UTest.pas',
   uGetSerialRest_ITest in 'uGetSerialRest_ITest.pas',
   uMyUtils in '..\src\Shared\uMyUtils.pas',
-  RestFluent in '..\modules\restclient\v12.1.3\RestFluent.pas';
+  RestFluent in '..\modules\restclient\v12.1.3\RestFluent.pas',
+  uGetSerialRegistryAPIRepository_UTest in 'uGetSerialRegistryAPIRepository_UTest.pas',
+  uGenericRepository in '..\modules\genericrepositorylistinmemory\uGenericRepository.pas',
+  uInterfaceRepository in '..\modules\genericrepositorylistinmemory\uInterfaceRepository.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}

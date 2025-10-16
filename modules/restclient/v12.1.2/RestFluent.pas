@@ -11,17 +11,14 @@ unit RestFluent;
                     |__| |   ___/
     _       _        __  |  |
    /  /  / /_  /| /  /   |__|
-  /_ /_ / /_  / |/  / Copyright (C) 2025 Márcio Koehler
-
-  /// https://github.com/mak58/RestClient/v12.1.3
+  /_ /_ / /_  / |/  / Copyright (C) 2024 Márcio Koehler - v12.1.2
  }
 
 interface
 
 uses
   REST.Client, REST.Types,
-  System.Generics.Collections,
-  System.SysUtils;
+  System.Generics.Collections;
 
 type
   TKindAuth = (eDefault, eJWT, eBearer, eAuth, eBasic);
@@ -72,6 +69,7 @@ type
    TRestFluent = class(TInterfacedObject, IRestFluent)
    private
      RestClient: TRESTClient;
+     RestResponse: TRESTResponse;
      FToken, FPayload: string;
      FFilePath, FContentType: string;
      FAccept, FCharset: string;
@@ -86,9 +84,7 @@ type
      function GetResultRequest(out AResult: TResult;
        ARestRequest: TRESTRequest): TResult;
      procedure ExecuteNewRequestSettings(out ARequest: TRESTRequest);
-     procedure ExecuteExcept(out AResult: TResult;
-       const AStatusCode: Integer; const AErrorMessage: string);
-     function ValidateURL(out AResult: TResult; const AURL: string) : Boolean;
+     procedure ExecuteExcept(out AResult: TResult; ARestRequest: TRESTRequest);
    public
     function AddToken(const AToken: string; const AKind: TKindAuth): IRestFluent;
     function AddPayload(const AJson: string): IRestFluent;
@@ -110,19 +106,17 @@ type
     function MapDeleteAsync(const APath: string; ACallback: TOnRequestFinished = nil): TResult;
 
     constructor Create();
-    destructor Destroy(); override;
+    destructor Destroy();
    end;
 
-const
-  LKindAuthName: array[TKindAuth] of string = ('', '', 'Bearer ', '', 'Basic ');
-  URL_INVALID = 'Invalid URL';
+  const
+    LKindAuthName: array[TKindAuth] of string = ('', '', 'Bearer ', '', 'Basic ');
 
 implementation
 
 uses
   System.Net.HttpClient,
-  System.StrUtils, System.Classes,
-  TypInfo;
+  System.SysUtils, System.StrUtils, System.Classes;
 
 { TRestFluent }
 
@@ -226,7 +220,7 @@ begin
     FListParams := TList<TAddParameter>.Create();
 
   FListParams.Add(TAddParameter.Create(AName, AValue, AKind));
-
+  
   Result := Self;
 end;
 
@@ -238,8 +232,6 @@ var
   resultRequest: TResult;
   RestRequest: TRESTRequest;
 begin
-  if not(Self.ValidateURL(resultRequest, AURL)) then
-    Exit(resultRequest);
   try
     Self.ExecuteNewRequestSettings(RestRequest);
     RestClient.BaseURL := AURL;
@@ -269,12 +261,11 @@ begin
     else
     begin
       RestRequest.Execute();
+
       Self.GetResultRequest(Result, RestRequest);
     end;
   except
-    Self.ExecuteExcept(resultRequest,
-      RestRequest.Response.StatusCode,
-      RestRequest.Response.ErrorMessage);
+    Self.ExecuteExcept(resultRequest, RestRequest);
     Result := resultRequest;
   end;
 end;
@@ -321,9 +312,9 @@ begin
   ARequest.AcceptCharset := FCharset;
 
   if (Length(FHeaderParams) >= 2) then
-  begin
-    for indexH := 0 to High(FHeaderParams) do
-      if (indexH mod 2 = 0) then
+  begin    
+    for indexH := 0 to High(FHeaderParams) do       
+      if (indexH mod 2 = 0) then      
         ARequest.Params.AddHeader(FHeaderParams[indexH], FHeaderParams[indexH + 1]);
     FHeaderParams := nil;
   end;
@@ -340,29 +331,16 @@ begin
   AResult.IsSuccessful := (ARestRequest.Response.StatusCode = 200);
 end;
 
-procedure TRestFluent.ExecuteExcept(out AResult: TResult;
-  const AStatusCode: Integer; const AErrorMessage: string);
+procedure TRestFluent.ExecuteExcept(out AResult: TResult; ARestRequest: TRESTRequest);
 begin
-  AResult.StatusCode := AStatusCode;
-  AResult.IsSuccessful := False;
+  AResult.StatusCode := ARestRequest.Response.StatusCode;
 
   case (AResult.StatusCode) of
     0: AResult.Error := 'Error on HTTP connection. Verify your network';
   else
-    AResult.Error := AErrorMessage;
+    AResult.Error := ARestRequest.Response.ErrorMessage;
   end;
 end;
-
-function TRestFluent.ValidateURL(out AResult: TResult;
-  const AURL: string): Boolean;
-begin
-  Result := (AURL.Trim <> '');
-
-  if (not Result) then
-    Self.ExecuteExcept(AResult, 1, URL_INVALID);
-end;
-
-{endpoints}
 
 function TRestFluent.MapGet(const APath: string): TResult;
 begin

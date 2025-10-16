@@ -30,3 +30,4 @@ Thumbs.db
 # IDE-specific
 __history/
 __recovery/
+tests/bin

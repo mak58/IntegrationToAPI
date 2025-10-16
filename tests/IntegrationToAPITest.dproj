@@ -116,6 +116,9 @@
         <DCCReference Include="uGetSerialRest_ITest.pas"/>
         <DCCReference Include="..\src\Shared\uMyUtils.pas"/>
         <DCCReference Include="..\modules\restclient\v12.1.3\RestFluent.pas"/>
+        <DCCReference Include="uGetSerialRegistryAPIRepository_UTest.pas"/>
+        <DCCReference Include="..\modules\genericrepositorylistinmemory\uGenericRepository.pas"/>
+        <DCCReference Include="..\modules\genericrepositorylistinmemory\uInterfaceRepository.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
